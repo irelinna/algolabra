@@ -1,0 +1,15 @@
+1.	Mitä olen tehnyt tällä viikolla?
+
+Tällä viikolla tein random:lla alkulukujen generoinnin, ja tähän apufunktion tarkistukseen. Myös suurimman osa avainten luonnista tein tällä viikolla. Apuna inverse modular tekemiseen käytin LLM:ää, sillä en saanut sumpya toimimaan koneellani. Muuten algoritmit olivat mielestäni ihan loogisia, kunhan katsoi askel askeleelta läpi.
+
+2.	Miten ohjelma on edistynyt? Mitä teen seuraavaksi?
+
+Ohjelma edistyy mielestäni ihan hyvin, ajattelin ensi viikolla aloittaa testauksen, sekä yrittää saada salauksen ja purkamisen toimimaan ainakin alkeellisesti.
+
+3.	Mitä opin tällä viikolla / tänään?
+
+Pitkästä aikaa virkistin muistia siitä miten matikkaa tehdään koodilla, Python on onneksi hyvä kieli siihen.
+
+4.	Mikä jäi epäselväksi tai tuottanut vaikeuksia? 
+
+Oikeastaan vain tuo inverse modular tuotti hankaluuksia, kun en ole sitä koskaan käynyt yliopistolla läpi. Muuten asiat kyllä edistyivät. 
