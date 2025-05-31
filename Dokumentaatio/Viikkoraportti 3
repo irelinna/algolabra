@@ -1,0 +1,7 @@
+Lopulta en tarvinnutkaan omaa alkuluku-tarkistusta, sillä sain sympyn toimimaan. Tämä on erittäin hyvä asia, sillä aiemmalla metodilla alkulukujen luonti oli tuskallisen hidasta. Vaikeuksia toi myös se, että ainoastaan todella lyhyet merkkijonot voi nyt salata, mutta muuten salaus toimii. 1024-bittisellä avaimella pystyy salaamaan ja purkamaan ainakin kahden merkin kokoisia merkkijonoja. Korjaan asian ensi viikolla niin että varmistan suurempien alkulukujen generoinnin kun nyt.
+
+Tein myös string-to-int ja int-to-string funktiot, näihin käytin ChatGPT:tä avuksi.
+
+Asennettu poetry ja pylint, mutta en aloittanut vielä testejä. Tämä johtuu siitä että  sain vasta tällä viikolla itse avainten luonnin ja salauksen/purun toimimaan tällä viikolla. Testit on mielestäni RSA-salauksessa olennaisia lähinnä itse salauksen ja purun suhteen (toimii sekä pienillä että isoilla avaimilla, salaus toimii oikein) joten halusin tehdä ne sen jälkeen kun tämä toimivat. 
+
+Tällä viikolla käytin aikaa projektiin n. 12h.
