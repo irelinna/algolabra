@@ -1,0 +1,7 @@
+Tällä viikolla tehty 500 pienimmän alkuluvun generointi sekä Miller-Rabin-tarkistus. Samoin testit on nyt suurimmaksi osaksi tehty. Yhdessä testissä tuli mielenkiintoinen huomio tehtyä. test_prime_generation: AssertionError: 2045 not greater than or equal to 2048. Eli se miten luon alkulukuja secrets.randbits(keysize) tuottaa jostakin syystä liian lyhyen luvun. Katson tätä tarkemmin ensi viikolla, muuten testit menivät läpi ihan hyvin.
+
+Miller-Rabin-tarkistuksen ymmärtäminen oli matemaattisesti haastavaa, mutta noudattamalla ohjeita ja kirjoittamalla joka väliin kommentteja ja esimerkkejä luulen ymmärtäväni nyt ainakin tarpeeksi hyvin. Kommentteja on nyt todella paljon tästä syystä, se ei varmaankaan ole ongelma, toivottavasti se auttaa myös vertaisarvioijia ymmärtämään mitä tässä yritetään saada aikaan.
+
+Onkohan käyttäliittymässä tarpeen luoda ominaisuus jossa voisi päättää halutaanko tietyllä avaimella purkaa vai salata viesti, vai riittääkö nykyinen toiminnallisuus jossa ohjelma palauttaa suoraan sekä salatun että puretun viestin?
+
+Käytin tällä viikolla projektiin n. 15h
