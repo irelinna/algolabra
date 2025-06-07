@@ -1,9 +1,89 @@
-import random
-from sympy import randprime, mod_inverse
+from sympy import mod_inverse
+import secrets
+
+
+# empty list for found primes
+list_of_primes = []
+
+# fill prime list with Sieve of Eratosthenes
+def sieve_of_eratosthenes(limit):
+
+    global list_of_primes
+
+    # make a boolean array where all values = True
+    prime = [True for i in range(limit+1)]
+    
+    # starting from 2
+    p = 2
+    while (p * p <= limit):
+
+        # if this is not changed, prime[p] is a prime
+        if (prime[p] == True):
+
+            # updating all multiples of p to False
+            for i in range(p * p, limit+1, p):
+                prime[i] = False
+
+        # check for multiples of next number
+        p += 1
+
+    # add all found primes to list
+    for p in range(2, limit+1):
+        if prime[p]:
+            list_of_primes.append(p)
+    
+    return list_of_primes
+
+
+# Miller-Rabin primality test. n = prime candidate, k = number of rounds
+def miller_rabin(n, k=8):
+    # numbers less than 2 are not prime
+    if n < 2:
+        return False
+
+
+    # write n - 1 as 2^r * d, so divide (n-1) by 2 as many times as possible
+    # for example if n = 561, n-1 = 560
+    # 560 / 2 = 280 -> 280 / 2 = 140 -> 140 / 2 = 70 -> 70 / 2 = 35 (odd)
+    # so, (n-1) = 2^4 * 35
+    # n = 561, r = 4, d = 35
+
+    r, d = 0, n - 1
+    while d % 2 == 0:
+        d //= 2
+        r += 1
+
+    for _ in range(k):
+        a = secrets.randbelow(n - 3) + 2
+        x = pow(a, d, n)  # for above example if a = 2, x = 2^35 mod 561 = 263
+        # if x = 1 or n-1, stop checking
+        if x == 1 or x == n - 1:
+            continue
+        # square x up to r-1 times (so 3 times in the example)
+        for _ in range(r - 1):
+            # x^2 mod n
+            x = pow(x, 2, n)
+            #if x = n-1, n is a prime number, else a composite
+            if x == n - 1:
+                break
+        else:
+            # x != n-1, n is a composite
+            return False
+    # x == n-1, n is a prime
+    return True
+
 
 # generate some prime number
 def generate_prime(keysize):
-    return randprime(1,keysize)
+    prime_list = sieve_of_eratosthenes(500)
+    while True:
+        candidate = secrets.randbits(keysize) | 1  # make it odd, even numbers cannot be prime
+        # check candidate against list_of_primes
+        if any(candidate % p == 0 for p in prime_list):
+            continue
+        # if candidate is not divisible by any prime in list_of_primes, then check with Miller-Rabin
+        if miller_rabin(candidate):
+            return candidate
 
 
 # key generation

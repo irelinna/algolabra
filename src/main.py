@@ -2,7 +2,7 @@ from utilities import generate_keys, encrypt, decrypt
 
 def main():
     print("Generating keys....")
-    public_key, private_key = generate_keys(1024)
+    public_key, private_key = generate_keys(2048)
 
     # Key generation
     # To view private key, put 'private_key[0]' in place of <hidden>
