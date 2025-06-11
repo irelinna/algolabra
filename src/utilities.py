@@ -1,4 +1,3 @@
-from sympy import mod_inverse
 import secrets
 
 
@@ -105,6 +104,19 @@ def generate_keys(keysize):
     d = mod_inverse(e, phi)
     return ((e, n), (d, n))
 
+
+def mod_inverse(a, m):
+    # extended Euclidean algorithm
+    m0, x0, x1 = m, 0, 1
+    if m == 1:
+        return None  # inverse mod doesn't exist
+
+    while a > 1:
+        q = a // m
+        a, m = m, a % m
+        x0, x1 = x1 - q * x0, x0
+
+    return x1 + m0 if x1 < 0 else x1
 
 
 def string_to_int(message: str) -> int:
