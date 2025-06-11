@@ -1,3 +1,5 @@
 Algoritmi-harjoitustyö
 
-Tähän tulee myöhemmin ohjeet ja lisää sisältöä.
+Projektin voi ajaa ajamalla main.py
+
+Tarkemmat käyttöohjeet tulossa myöhemmin, mutta käyttöliittymä selittää kyllä jotenkin miten ohjelmaa ajetaan.
