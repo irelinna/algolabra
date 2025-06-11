@@ -42,10 +42,10 @@ def miller_rabin(n, k=8):
         return False
 
 
-    # write n - 1 as 2^r * d, so divide (n-1) by 2 as many times as possible
+    # write n-1 as 2^r*d, so divide (n-1) by 2 as many times as possible
     # for example if n = 561, n-1 = 560
-    # 560 / 2 = 280 -> 280 / 2 = 140 -> 140 / 2 = 70 -> 70 / 2 = 35 (odd)
-    # so, (n-1) = 2^4 * 35
+    # 560/2=280  ->  280/2=140  ->  140/2=70 ->  70/2=35 (odd)
+    # so, (n-1) = 2^4*35
     # n = 561, r = 4, d = 35
 
     r, d = 0, n - 1
@@ -77,7 +77,10 @@ def miller_rabin(n, k=8):
 def generate_prime(keysize):
     prime_list = sieve_of_eratosthenes(500)
     while True:
-        candidate = secrets.randbits(keysize) | 1  # make it odd, even numbers cannot be prime
+        candidate = secrets.randbits(keysize)
+        candidate |= (1 << (keysize - 1))    # ensure that the candidate has exactly 1024 bits by making the highest bit 1
+        candidate |= 1      # make it odd, even numbers cannot be prime
+
         # check candidate against list_of_primes
         if any(candidate % p == 0 for p in prime_list):
             continue
