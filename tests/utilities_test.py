@@ -1,5 +1,5 @@
-import unittest 
-from .. import utilities
+import unittest
+from src import utilities
 
 class TestUtilities(unittest.TestCase):
     def test_int_string(self):

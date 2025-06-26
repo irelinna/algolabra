@@ -1,16 +1,16 @@
-from utilities import generate_keys, encrypt, decrypt
+from .utilities import generate_keys, encrypt, decrypt
 
 def main():
     print("Generating keys....")
     public_key, private_key = generate_keys(2048)
 
     # Key generation
-    print(f"\nPublic key: (e={public_key[0]}, n=<{len(str(public_key[1]))} digits>)")
-    print(f"\nPrivate key: (secret number={private_key[0]}, n=<{len(str(private_key[1]))} digits>)\n")
+    print(f"\nPublic key:(e={public_key[0]},n=<{len(str(public_key[1]))} digits>)")
+    print(f"\nPrivate key:(secret number={private_key[0]},n=<{len(str(private_key[1]))} digits>)\n")
 
-    global message
+    message = ''
 
-    while(True):
+    while True:
 
         userinput = input("Do you want to encrypt or decrypt message? (q to quit): ")
 
@@ -23,7 +23,7 @@ def main():
             try:
                 ciphertext = encrypt(message, public_key)
                 print(f"\nEncrypted message: {ciphertext}")
-            
+
             except ValueError as error:
                 print(f"\nError: {error}")
 
@@ -41,9 +41,8 @@ def main():
                     if decrypted == message:
                         print("\nDecryption succeeded!")
                         break
-                    else:
-                        print("\nDecryption failed.")
-                        break
+                    print("\nDecryption failed.")
+                    break
 
                 except ValueError as error:
                     print(f"\nError: {error}")
@@ -51,7 +50,7 @@ def main():
                 print("Private keys do not match. Try again with correct private key.")
                 print(private_input)
                 print(private_key[0])
-        
+
         else:
             print("Please enter a valid command.")
 

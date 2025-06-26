@@ -7,17 +7,15 @@ list_of_primes = []
 # fill prime list with Sieve of Eratosthenes
 def sieve_of_eratosthenes(limit):
 
-    global list_of_primes
-
     # make a boolean array where all values = True
     prime = [True for i in range(limit+1)]
-    
+
     # starting from 2
     p = 2
-    while (p * p <= limit):
+    while p * p <= limit:
 
         # if this is not changed, prime[p] is a prime
-        if (prime[p] == True):
+        if prime[p] == True:
 
             # updating all multiples of p to False
             for i in range(p * p, limit+1, p):
@@ -30,7 +28,7 @@ def sieve_of_eratosthenes(limit):
     for p in range(2, limit+1):
         if prime[p]:
             list_of_primes.append(p)
-    
+
     return list_of_primes
 
 
@@ -56,7 +54,7 @@ def miller_rabin(n, k=8):
         a = secrets.randbelow(n - 3) + 2
         x = pow(a, d, n)  # for above example if a = 2, x = 2^35 mod 561 = 263
         # if x = 1 or n-1, stop checking
-        if x == 1 or x == n - 1:
+        if x in (1, n - 1):
             continue
         # square x up to r-1 times (so 3 times in the example)
         for _ in range(r - 1):
@@ -77,8 +75,10 @@ def generate_prime(keysize):
     prime_list = sieve_of_eratosthenes(500)
     while True:
         candidate = secrets.randbits(keysize)
-        candidate |= (1 << (keysize - 1))    # ensure that the candidate has exactly 1024 bits by making the highest bit 1
-        candidate |= 1      # make it odd, even numbers cannot be prime
+         # ensure that the candidate has exactly 1024 bits by making the highest bit 1
+        candidate |= (1 << (keysize - 1))
+         # make it odd, even numbers cannot be prime
+        candidate |= 1
 
         # check candidate against list_of_primes
         if any(candidate % p == 0 for p in prime_list):
@@ -140,5 +140,3 @@ def decrypt(ciphertext, private_key):
     d, n = private_key
     message_int = pow(ciphertext, d, n)
     return int_to_string(message_int)
-
-
