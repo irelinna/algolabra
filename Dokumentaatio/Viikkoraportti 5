@@ -1,0 +1,10 @@
+Unohdin committaa tämän oikealla viikolla, en kuitenkaan ole keskeyttänyt kurssia.
+
+Tällä viikolla selvitin, miksi funktio generate_prime() palautti aiemmin myös alle 1024-bittisiä alkulukuja. Huomasin tämän test_prime_generation()-testissä. Salaukseen ja sen turvallisuuteen tämä ei olennaisesti vaikuta, mutta mukavampi että testit menevät aina läpi ja koko projekti on määrittelyn mukainen. Tämä korjaantui sillä, että varmistan generoidun luvun korkeimman bitin olevan aina 1, sillä lyhyemmät alkuluvut johtuivat alussa olevista nollista.
+Päivitin käyttöliittymän interaktiiviseksi, jotta käyttäjä voi valita encryptauksen ja decryptauksen välillä. 
+
+Käyttöliittymä jää konsoli-käyttöliittymäksi, en koe että graafinen käyttöliittymä toisi projektiin lisäarvoa. Harkitsen kyllä sitä että tekisin avaimista tiedoston, jota voisi käyttää salaukseen ja purkamiseen hieman siistimmin, mutta tämäkin lähinnä jos aika riittää.
+
+Käytin ChatGPT:tä luomaan mod_inverse funktion, jotta vertaisarvioijien ei tarvitsisi asentaa SymPy:ä.
+
+Tällä viikolla käytin projektiin + vertaisarviointiin yhteensä n. 8h.
